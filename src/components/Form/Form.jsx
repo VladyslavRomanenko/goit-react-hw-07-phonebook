@@ -23,19 +23,14 @@ const Form = () => {
   const handleSubmit = event => {
     event.preventDefault();
     if (checkName(contact.name)) {
-      setContact({
-        name: '',
-        number: '',
-      });
       alert('The contact already exists');
-    } else {
-      const newContact = contact;
-      dispatch(addContactThunk(newContact));
-      setContact({
-        name: '',
-        number: '',
-      });
+      return;
     }
+    dispatch(addContactThunk(contact));
+    setContact({
+      name: '',
+      number: '',
+    });
   };
 
   return (
