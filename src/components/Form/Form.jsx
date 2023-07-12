@@ -2,8 +2,7 @@ import css from './Form.module.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectContacts } from 'redux/selectors';
-import { nanoid } from '@reduxjs/toolkit';
-import { addContact } from 'redux/slice';
+import { addContactThunk } from 'redux/operations';
 
 const Form = () => {
   const [contact, setContact] = useState({ name: '', number: '' });
@@ -30,8 +29,8 @@ const Form = () => {
       });
       alert('The contact already exists');
     } else {
-      const newContact = { ...contact, id: nanoid() };
-      dispatch(addContact(newContact));
+      const newContact = contact;
+      dispatch(addContactThunk(newContact));
       setContact({
         name: '',
         number: '',
