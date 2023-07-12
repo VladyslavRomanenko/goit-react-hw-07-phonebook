@@ -5,5 +5,4 @@ export const store = configureStore({
   reducer: {
     contacts: contactsReduser,
   },
-  devTools: process.env.NODE_ENV !== 'production',
 });
